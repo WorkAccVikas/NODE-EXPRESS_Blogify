@@ -1,3 +1,9 @@
 1. Implement following : 
     - SignIn route (BD and FD)
     - SignUp route (BD and FD)
+
+2. Implement following : 
+    - If user already signin then navbar show his/her name otherwise signin and create account link in navbar 
+    - Create blog schema.
+    - Create addBlog page and make entry in db.
+    - In home page, all blogs display in card format

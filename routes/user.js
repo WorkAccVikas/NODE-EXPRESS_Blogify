@@ -12,13 +12,22 @@ router.get("/signup", (req, res) => {
 });
 
 router.post("/signin", async (req, res) => {
-  console.log("signin route");
-  const { email, password } = req.body;
+  try {
+    console.log("signin route");
+    const { email, password } = req.body;
 
-  const user = await userModel.matchPassword(email, password);
+    const token = await userModel.matchPasswordAndGenerateToken(
+      email,
+      password
+    );
 
-  console.log("User = ", user);
-  return res.redirect("/");
+    console.log("Token = ", token);
+    return res.cookie("token", token).redirect("/");
+  } catch (error) {
+    return res.render("signin", {
+      error: "Email or Password is incorrect",
+    });
+  }
 });
 
 router.post("/signup", async (req, res) => {
@@ -32,6 +41,13 @@ router.post("/signup", async (req, res) => {
   });
 
   return res.redirect("/");
+});
+
+/** DESC : logout functionality :
+ *  First clear cookie and then redirect to home page
+ */
+router.get("/logout", (req, res) => {
+  return res.clearCookie("token").redirect("/");
 });
 
 module.exports = router;

@@ -2,8 +2,27 @@
 
 const mongoose = require("mongoose");
 
-const userSchema = new mongoose.Schema({}, { timestamps: true });
+const blogSchema = new mongoose.Schema(
+  {
+    title: {
+      type: String,
+      required: true,
+    },
+    body: {
+      type: String,
+      required: true,
+    },
+    coverImageURL: {
+      type: String,
+    },
+    createdBy: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "User",
+    },
+  },
+  { timestamps: true }
+);
 
-const User = mongoose.model("User", userSchema, "User");
+const Blog = mongoose.model("Blog", blogSchema, "Blog");
 
-module.exports = User;
+module.exports = Blog;

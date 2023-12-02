@@ -5,7 +5,23 @@
     <title>HOME - PAGE</title>
   </head>
   <body>
-    <%- include('./partials/nav') %>
+    <%- include('./partials/nav') %> <%= JSON.stringify(user) %>
+
+    <div class="container mt-3">
+      <% blogs.forEach(blog => { %>
+      <div class="card" style="width: 18rem">
+        <img
+          src="<%= blog.coverImageURL %>"
+          class="card-img-top"
+          alt="coverImage"
+        />
+        <div class="card-body">
+          <h5 class="card-title"><%= blog.title %></h5>
+          <a href="/blog/<%= blog._id %>" class="btn btn-primary">View</a>
+        </div>
+      </div>
+      <% }) %>
+    </div>
 
     <!-- NOTE : It is not mandatory to used .ejs extension when we include -->
     <%- include('./partials/script') %>

@@ -1,6 +1,7 @@
 const { createHmac, randomBytes } = require("crypto");
 
 const mongoose = require("mongoose");
+const { createTokenForUser } = require("../services/authentication");
 
 const userSchema = new mongoose.Schema(
   {
@@ -52,11 +53,11 @@ userSchema.pre("save", function (next) {
   next();
 });
 
-userSchema.static("matchPassword", async function (email, password) {
+userSchema.static("matchPasswordAndGenerateToken", async function (email, password) {
   console.log("Match Password .......");
-  console.log(this);
+  // console.log(this);
   const user = await this.findOne({ email });
-  console.log(`🚀 ~ file: user.js:59 ~ user:`, user);
+  // console.log(`🚀 ~ file: user.js:59 ~ user:`, user);
 
   if (!user) throw new Error("User not found!");
 
@@ -71,8 +72,14 @@ userSchema.static("matchPassword", async function (email, password) {
     throw new Error("Incorrect Password");
 
   // LEARN : Exclude few key from object returned by mongoose (e.g find operation, etc)
-  const { salt: salt1, password: password1, ...result } = user.toObject();
-  return result;
+  // const { salt: salt1, password: password1, ...result } = user.toObject();
+
+  // POINT : Return user data excluded salt and password
+  // return result;
+
+  const token = createTokenForUser(user);
+  // POINT : Return token
+  return token;
 });
 
 const User = mongoose.model("User", userSchema, "User");
