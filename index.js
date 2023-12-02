@@ -27,7 +27,7 @@ app.use(checkForAuthenticationCookie("token"));
 app.use(express.static(path.resolve("./public")));
 
 app.get("/", async (req, res) => {
-  const allBlogs = await blogModel.find({});
+  const allBlogs = await blogModel.find({}).sort("-createdAt");
 
   return res.render("home", {
     user: req.user,

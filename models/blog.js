@@ -1,5 +1,3 @@
-// FIXME : Boiler plate code
-
 const mongoose = require("mongoose");
 
 const blogSchema = new mongoose.Schema(

@@ -7,3 +7,9 @@
     - Create blog schema.
     - Create addBlog page and make entry in db.
     - In home page, all blogs display in card format
+
+3. Implement following : 
+    - Create comment schema.
+    - Comment on a specific blog post.
+    - Display comments under each blog posts.
+    - All Completed (Finish)
