@@ -1,0 +1,47 @@
+1. Create project using Node + EJS 
+
+2. How to set view folder (folder that include ejs file)
+
+3. Add cookie-parser middleware to get/set data from cookie 
+
+4. how to serve static files or folders
+
+5. How to pass data from api to ejs file 
+
+6. Use enum, default in schema of mongoose for field
+
+7. Save encrypted password in schema using inbuilt "crypto" package. (in pre hook)
+
+8. How to create method using static in model file 
+    - This method is accessible by using model variable
+    - Here, matchPasswordAndGenerateToken : 
+        -  takes email and password match 
+            - if yes return token 
+            - else throw error 
+
+9. How to add partial ejs file in main page 
+
+    - E.g. Navbar is partial file, and it is included in all pages 
+10. All data from api to ejs file store in locals variable
+
+11. EJS FILE 
+    - if else 
+    - forEach
+
+12. logout functionality 
+
+13. File store locally that uploaded from Frontend (using "multer" package)
+
+14. using "cookie-parser" package
+    - set cookie
+    - clear cookie 
+    - get cookie data 
+
+15. Two utility method 
+    - createTokenForUser : return token (using jwt.sign)
+    - validateToken  : return payload data (using jwt.verify)
+
+16. How to add new page to route ? (full process)
+    - Create EJS file in views folder and write UI.
+    - Add new route in routes folder and render that ejs file 
+        - using res.render("ejs file name without extension")

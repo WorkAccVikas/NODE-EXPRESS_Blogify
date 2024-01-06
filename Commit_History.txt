@@ -13,3 +13,6 @@
     - Comment on a specific blog post.
     - Display comments under each blog posts.
     - All Completed (Finish)
+
+4. Add LEARN.txt : 
+    - In this document, I have outlined what I have learned throughout the project.

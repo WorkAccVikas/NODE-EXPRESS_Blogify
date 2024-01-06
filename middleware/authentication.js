@@ -1,7 +1,9 @@
 const { validateToken } = require("../services/authentication");
 
+// DESC : Here, use of closure
 function checkForAuthenticationCookie(cookieName) {
   return (req, res, next) => {
+    // DESC : Get cookie data
     const tokenCookieValue = req.cookies[cookieName];
 
     if (!tokenCookieValue) {
